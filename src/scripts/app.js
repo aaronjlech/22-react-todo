@@ -45,20 +45,16 @@ const HomeView = React.createClass({
       }
    },
 
-   _changeStateOfTask: function(){
+   _removeItems: function(){
 
+      let newList = this.state.allItems.filter(function(obj){
 
+         return (obj.isDone)
 
-
-   },
-
-   _removeItems: function(evt){
-
-      this.state.allItems.filter(function(){
-
-
-         
       })
+      console.log(newList)
+
+      return this.setState({allItems: newList})
 
    },
 
@@ -70,15 +66,39 @@ const HomeView = React.createClass({
            return <NewToDoList itemData={itemObj} key = {i} />
         })
       return(
-         <div className="todo-container">
-            <input type="text" className="add-todo" onKeyDown={this._addNewTask}/>
-               <ul className="todo-list">
-               {createListing}
-               </ul>
-            <button className="btn btn-primary remove-tasks" onClick={this._removeItems}>Remove Items from task list</button>
+         <div className="container todo-container">
+            <h1 className='app-header'>Stuff To Do ...</h1>
+               <input type="text" className="add-todo" placeholder="add somethin to do..." onKeyDown={this._addNewTask}/>
+                  <NewNavBar/>
+                     <div className="row todo-list">
+                        {createListing}
+                     </div>
+               <button className="btn btn-primary remove-tasks" onClick={this._removeItems}>Remove Items from task list</button>
          </div>
       )
    }
+})
+
+const NewNavBar = React.createClass({
+
+
+
+
+   render: function(){
+
+      return (
+         <div className="row nav-bar">
+            <div className="col-xs-4 text-center nav-tab selected"><h3>All Tasks</h3></div>
+               <div className="col-xs-4 text-center nav-tab"><h3>Complete</h3></div>
+            <div className="col-xs-4 text-center nav-tab"><h3>Incomplete</h3></div>
+         </div>
+
+
+      )
+
+
+   },
+
 })
 
 const NewToDoList = React.createClass({
@@ -101,10 +121,15 @@ const NewToDoList = React.createClass({
 
    render: function(){
       return (
-         <li className="todo-item">
-            <p>{this.props.itemData.tasktitle}</p>
-            <input type="checkbox" className="task-checkbox" onClick={this._setDone} />
-         </li>
+         <div className="row">
+            <div className="col-xs-10 todo-item">
+               <input type="checkbox" className="task-checkbox" onClick={this._setDone} />
+               <p>{this.props.itemData.tasktitle}</p>
+            </div>
+            <div className="col-xs-2 right-col">
+               <i className="fa fa-eraser item-eraser" aria-hidden="true"></i>
+            </div>
+         </div>
 
 
       )
@@ -113,13 +138,6 @@ const NewToDoList = React.createClass({
 
 })
 
-// NAV ITEMS
-// <ul className="nav nav-tabs todo-nav">
-//    <li role="presentation" className="active todo-tab-active"><a href="#">all</a></li>
-//    <li role="presentation"><a href="#">h</a></li>
-//    <li role="presentation"><a href="#">undone</a></li>
-// </ul>
-// TO DO ITEMS ****
 
 
 

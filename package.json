@@ -49,6 +49,7 @@
     "bootstrap-sass": "^3.3.7",
     "ejs": "^2.4.2",
     "express": "^4.14.0",
+    "font-awesome": "^4.7.0",
     "jquery": "2.2.4",
     "react": "^15.1.0",
     "react-dom": "^15.1.0"

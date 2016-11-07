@@ -1,14 +1,16 @@
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-
+@import "../../node_modules/font-awesome/scss/font-awesome.scss";
 
 
 * {
-	font-family: Helvetica, Arial, sans-serif;
-	box-sizing: border-box;
+font-family: 'Amatic SC', cursive;
+box-sizing: border-box;
 }
 
 body{
-	background: #3498db;
+	background: #CCC;
+
+
 
 
 }
@@ -16,7 +18,7 @@ body{
 #app-container{
 	max-width: 768px;
 	margin: 0 auto;
-	background: #3498db;
+	background: #CCC;
 	.todo-nav{
 		border: none;
 		.todo-tab-active{
@@ -25,10 +27,6 @@ body{
 					border: 2px solid #000;
 				}
 
-
-			// background: #999;
-
-
 		}
 	}
 
@@ -36,13 +34,39 @@ body{
 
 		.todo-container{
 
-			border: 2px solid #000;
+			border: 5px solid #000;
+			border-radius: 6px;
 
-			background: #999;
+			background: #fff;
+			.app-header{
+				font-weight: 700;
+				text-align: center;
+				margin: 0 auto;
+			}
+
+			.nav-bar{
+				font-weight: 700;
+				color: #FFF;
+
+				.nav-tab{
+					padding: 0;
+					background: #1abc9c;
+				
+				}
+				.selected{
+
+					background: #34495e;
+				}
+
+
+
+
+			}
 			.add-todo{
+				border-style: none;
 				margin: 4px 43%;
 				background: none;
-				border: 2px solid #000;
+				border-bottom: 2px solid #000;
 
 
 
@@ -53,22 +77,27 @@ body{
 				margin: 0 20%;
 
 				.todo-item{
+					font-weight: 700;
+					border-bottom: 2px solid #000;
 					margin: 4px auto;
 					list-style: none;
-					background: #555;
 
 					> *{display: inline-block;}
 
-
-
 				}
+				.right-col{
+
+					.item-eraser{
+						font-size: 2rem;
+						text-shadow: 1px 1px rgba(255, 255, 255, .4);
+						color: #F39CAC;
+
+					}
+				}
+
+
+
 			}
+		}
 
 	}
-
-
-
-
-
-
-}
