@@ -35,7 +35,6 @@ const HomeView = React.createClass({
          let newId = this.state.allItems.length
          let copyOfArray = this.state.allItems
          copyOfArray.push({tasktitle: newTitle, isDone: false, taskId: newId})
-         console.log()
 
          evt.target.value = ''
 
@@ -48,8 +47,12 @@ const HomeView = React.createClass({
    _removeItems: function(){
 
       let newList = this.state.allItems.filter(function(obj){
+         console.log(obj.isDone)
+         if(obj.isDone != true){
 
-         return (obj.isDone)
+            return true
+         }
+
 
       })
       console.log(newList)
@@ -116,6 +119,12 @@ const NewToDoList = React.createClass({
 
 
    },
+   _removeSelected: function(evt){
+      console.log(this.state)
+      let i = this.props.itemData.taskId
+      Backbone.Events.trigger('remove-clicked', i, )
+
+   },
 
 
 
@@ -127,7 +136,7 @@ const NewToDoList = React.createClass({
                <p>{this.props.itemData.tasktitle}</p>
             </div>
             <div className="col-xs-2 right-col">
-               <i className="fa fa-eraser item-eraser" aria-hidden="true"></i>
+               <i className="fa fa-eraser item-eraser" aria-hidden="true" onClick={this._removeSelected}></i>
             </div>
          </div>
 
